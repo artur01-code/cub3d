@@ -52,10 +52,13 @@ int count_map(t_window *window, char *line)
 		{
 			window->map->direction = line[i];
 			//set starting coordinates for the player
+			window->player->x = i;
+			window->player->y = window->map->rows;
 			flag++;
 		}
 		i++;
 	}
+	window->map->rows++;
 	if (window->map->columns < columns)
 		window->map->columns = columns;
 	return (flag);
@@ -115,10 +118,7 @@ int	map_handler(t_window *window)
 		if (ft_isalpha(line[0]))
 			safe_preoptions(window, line);
 		else if (ft_isdigit(line[counter]))
-		{
 			player_flag += count_map(window, line);
-			window->map->rows++;
-		}
 		free(line);
 		line = get_next_line(fd);
 	}

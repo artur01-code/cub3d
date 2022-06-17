@@ -33,6 +33,7 @@ void print_read(t_window *window)
 	while (window->map->map[i])
 		printf("line %s", window->map->map[i++]);
 	printf("F: %sC: %srows: %d\ncolumns: %d\ndirection: %c\n", window->map->F_tex, window->map->C_tex, window->map->rows, window->map->columns, window->map->direction);
+	printf("Player:\nx: %f\ny: %f\n", window->player->x, window->player->y);
 }
 
 int	main(int argc, char **argv)
@@ -48,11 +49,17 @@ int	main(int argc, char **argv)
 	// mlx = mlx_init();
 	// window->mlx = mlx;
 	//ft_init(window);
+
+	/**-----------------------------------------------------------*/
+	/* this should be included into ft_init as an extra function*/
 	window->map->rows = 0;
 	window->map->columns = 0;
 	if (set_path(window, argv[1]))
 		ft_end_process("Invalid path");
 	window->map->path = argv[1];
+	window->player = ft_calloc(1, sizeof(t_player));
+
+	/*------------------------------------------------------------*/
 	// mlx_loop_hook(window->mlx, ft_render_next_frame, window);
 	// mlx_hook(window->win, 17, 0, ft_close, window);
 	// mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
