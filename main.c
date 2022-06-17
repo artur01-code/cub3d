@@ -31,9 +31,12 @@ void print_read(t_window *window)
 {
 	int i = 0;
 	while (window->map->map[i])
-		printf("line %s", window->map->map[i++]);
+	{
+		printf("line[%d] %s", i, window->map->map[i]);
+		i++;
+	}
 	printf("F: %sC: %srows: %d\ncolumns: %d\ndirection: %c\n", window->map->F_tex, window->map->C_tex, window->map->rows, window->map->columns, window->map->direction);
-	printf("Player:\nx: %f\ny: %f\n", window->player->x, window->player->y);
+	printf("Player x: %d\ny: %d\n", (int)window->player->x, (int)window->player->y);
 }
 
 int	main(int argc, char **argv)

@@ -1,5 +1,4 @@
 #include "incl/cub3d.h"
-#include "libft/libft.h"
 
 /*
 gets triggert when the first character of the line is a alph
@@ -125,5 +124,7 @@ int	map_handler(t_window *window)
 	safe_map(window, window->map->rows);
 	if (player_flag == 0 || player_flag > 1)
 		ft_end_process("Invalid amount of player\n");
+	if(!check_map(window))
+		ft_end_process("Invalid map");
 	return (0);
 }

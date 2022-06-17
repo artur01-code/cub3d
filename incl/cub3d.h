@@ -108,5 +108,10 @@ int	ft_close(t_window *window);
 int map_handler(t_window *window);
 int count_map(t_window *window, char *line);
 int	safe_preoptions(t_window *window, char *line);
+int safe_map(t_window *window, int rows);
+
+// check_map.c
+
+int	check_map(t_window *window);
 
 #endif
