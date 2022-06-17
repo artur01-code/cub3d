@@ -24,6 +24,17 @@ int set_path(t_window *window, char *path)
 	return (0);
 }
 
+/*
+small testfunction to see what got red
+*/
+void print_read(t_window *window)
+{
+	int i = 0;
+	while (window->map->map[i])
+		printf("line %s", window->map->map[i++]);
+	printf("rows: %d\ncolumns: %d\ndirection: %c\n", window->map->rows, window->map->columns, window->map->direction);
+}
+
 int	main(int argc, char **argv)
 {
 	t_window	*window;
@@ -47,6 +58,7 @@ int	main(int argc, char **argv)
 	// mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
 	if (map_handler(window))
 		ft_end_process("Invalid map-read");
+	print_read(window);
 	printf("%s ends execution\n", argv[0]); //testing
 	//mlx_loop(window->mlx);
 	return (0);

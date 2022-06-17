@@ -48,7 +48,6 @@ typedef struct s_player
 {
 	double	x;
 	double	y;
-	char	direction;
 	int		size;
 	int		color;
 }	t_player;
@@ -59,6 +58,7 @@ typedef struct s_map
 	char *path;
 	int rows;
 	int columns;
+	char direction;
 	char *NO_path;
 	char *SO_path;
 	char *WE_path;

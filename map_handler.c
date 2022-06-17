@@ -47,7 +47,7 @@ int count_map(t_window *window, char *line)
 			columns++;
 		if (line[i] == 'N' || line[i] == 'O' || line[i] == 'S'
 			|| line[i] == 'W')
-			window->player->direction = line[i];
+			window->map->direction = line[i];
 		i++;
 	}
 	if (window->map->columns < columns)
