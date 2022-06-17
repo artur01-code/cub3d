@@ -36,7 +36,7 @@ void print_read(t_window *window)
 		i++;
 	}
 	printf("F: %sC: %srows: %d\ncolumns: %d\ndirection: %c\n", window->map->F_tex, window->map->C_tex, window->map->rows, window->map->columns, window->map->direction);
-	printf("Player x: %d\ny: %d\n", (int)window->player->x, (int)window->player->y);
+	printf("Player x: %d y: %d\n", (int)window->player->x, (int)window->player->y);
 }
 
 int	main(int argc, char **argv)

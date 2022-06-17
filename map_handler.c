@@ -46,7 +46,7 @@ int count_map(t_window *window, char *line)
 	{
 		if (ft_isdigit(line[i]))
 			columns++;
-		if (line[i] == 'N' || line[i] == 'O' || line[i] == 'S'
+		if (line[i] == 'N' || line[i] == 'E' || line[i] == 'S'
 			|| line[i] == 'W')
 		{
 			window->map->direction = line[i];
