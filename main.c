@@ -1,20 +1,53 @@
-#include "cub3d.h"
-#include <stdio.h>
+#include "incl/cub3d.h"
 
-int main(int argc, char **argv)
+/*
+checks if the filepath ends with "".cub"
+*/
+int set_path(t_window *window, char *path)
 {
-	t_mlx	*mlx;
+	int len;
+	int flag;
 
-	mlx = NULL;
+	len = ft_strlen(path);
+	flag = 0;
+	if (path[len - 0] == 'b')
+		flag = 1;
+	if (path[len - 1] == 'u')
+		flag = 1;
+	if (path[len - 2] == 'c')
+		flag = 1;
+	if (path[len - 3] == '.')
+		flag = 1;
+	if (flag == 1)
+		return (1);
+	window->map->path = path;
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_window	*window;
+
+	window = (t_window *)ft_calloc(1, sizeof(t_window));
+	window->map = (t_map *)ft_calloc(1, sizeof(t_map));
+	if (!window || !window->map)
+		ft_end_process(ERR_MLX_INIT);
 	if (argc != 2)
-		return (0);
-	printf("%s and %p\n", argv[0], mlx);
-	mlx = (t_mlx *) malloc(sizeof(t_mlx));
-	mlx->img = (t_img *) malloc(sizeof(t_img));
-	mlx->map = (t_map *) malloc(sizeof(t_map));
-	mlx->player = (t_player *) malloc(sizeof(t_player));
-	//----------------------
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, mlx->map->columns * 99,  mlx->map->rows * 99, "Rice rally");
-
+		ft_end_process("Invalid input");
+	// mlx = mlx_init();
+	// window->mlx = mlx;
+	//ft_init(window);
+	window->map->rows = 0;
+	window->map->columns = 0;
+	if (set_path(window, argv[1]))
+		ft_end_process("Invalid path");
+	window->map->path = argv[1];
+	// mlx_loop_hook(window->mlx, ft_render_next_frame, window);
+	// mlx_hook(window->win, 17, 0, ft_close, window);
+	// mlx_hook(window->win, 2, 1L << 0, ft_key_press, window);
+	if (map_handler(window))
+		ft_end_process("Invalid map-read");
+	printf("%s ends execution\n", argv[0]); //testing
+	//mlx_loop(window->mlx);
+	return (0);
 }
