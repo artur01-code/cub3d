@@ -52,6 +52,13 @@ typedef struct s_player
 	int		color;
 }	t_player;
 
+typedef struct s_texture
+{
+	int	red;
+	int	green;
+	int	blue;
+}	t_texture;
+
 typedef struct s_map
 {
 	char **map;
@@ -65,6 +72,8 @@ typedef struct s_map
 	char *EA_path;
 	char *F_tex;
 	char *C_tex;
+	t_texture *F;
+	t_texture *C;
 }	t_map;
 
 typedef struct s_window

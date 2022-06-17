@@ -46,6 +46,51 @@ static int	line_check(t_window *window, int line)
 	return (1);
 }
 
+// static int check_colors(t_texture *F, t_texture *C)
+// {
+// 	if (F->red < 0 || F->red > 255)
+// 		return (1);
+// 	if (F->green < 0 || F->green > 255)
+// 		return (1);
+// 	if (F->blue < 0 || F->blue > 255)
+// 		return (1);
+// 	if (C->red < 0 || C->red > 255)
+// 		return (1);
+// 	if (C->green < 0 || C->green > 255)
+// 		return (1);
+// 	if (C->blue < 0 || C->blue > 255)
+// 		return (1);
+// 	return (0);
+// }
+
+
+// static int init_colors(t_window *window)
+// {
+// 	char **tmp_f;
+// 	char **tmp_c;
+
+// 	tmp_f = ft_split(window->map->F_tex, ',');
+// 	window->map->F->red = ft_atoi(tmp_f[0]);
+// 	free(tmp_f[0]);
+// 	window->map->F->green = ft_atoi(tmp_f[1]);
+// 	free(tmp_f[1]);
+// 	window->map->F->blue = ft_atoi(tmp_f[2]);
+// 	free(tmp_f[2]);
+// 	free(tmp_f);
+// 	tmp_c = ft_split(window->map->F_tex, ',');
+// 	window->map->C->red = ft_atoi(tmp_f[0]);
+// 	free(tmp_c[0]);
+// 	window->map->C->green = ft_atoi(tmp_f[1]);
+// 	free(tmp_c[1]);
+// 	window->map->C->blue = ft_atoi(tmp_f[2]);
+// 	free(tmp_c[2]);
+// 	free(tmp_c);
+// 	if (!check_colors(window->map->F, window->map->C))
+// 		return (0);
+// 	return (1);
+// }
+
+
 int	check_map(t_window *window)
 {
 	int	i;
@@ -60,6 +105,8 @@ int	check_map(t_window *window)
 			return (0);
 		i++;
 	}
+	// if (!init_colors(window))
+	// 	return (0);
 	//window->map->map[(int)window->player->y][(int)window->player->x] = window->map->pdir;
 	return (1);
 }
