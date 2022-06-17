@@ -32,7 +32,7 @@ void print_read(t_window *window)
 	int i = 0;
 	while (window->map->map[i])
 		printf("line %s", window->map->map[i++]);
-	printf("rows: %d\ncolumns: %d\ndirection: %c\n", window->map->rows, window->map->columns, window->map->direction);
+	printf("F: %sC: %srows: %d\ncolumns: %d\ndirection: %c\n", window->map->F_tex, window->map->C_tex, window->map->rows, window->map->columns, window->map->direction);
 }
 
 int	main(int argc, char **argv)

@@ -37,9 +37,11 @@ safes every row of the map in the char** map and counts the size
 int count_map(t_window *window, char *line)
 {
 	int i;
+	int flag;
 	int columns;
 
 	i = 0;
+	flag = 0;
 	columns = 0;
 	while (line[i])
 	{
@@ -47,12 +49,16 @@ int count_map(t_window *window, char *line)
 			columns++;
 		if (line[i] == 'N' || line[i] == 'O' || line[i] == 'S'
 			|| line[i] == 'W')
+		{
 			window->map->direction = line[i];
+			//set starting coordinates for the player
+			flag++;
+		}
 		i++;
 	}
 	if (window->map->columns < columns)
 		window->map->columns = columns;
-	return (0);
+	return (flag);
 }
 
 /*
@@ -93,10 +99,12 @@ int	map_handler(t_window *window)
 {
 	int	fd;
 	int	counter;
+	int player_flag;
 	char	*line;
 
 	fd = open(window->map->path , O_RDONLY);
 	counter = 0;
+	player_flag = 0;
 	if (fd <= 0)
 		return (1);
 	line = get_next_line(fd);
@@ -108,12 +116,14 @@ int	map_handler(t_window *window)
 			safe_preoptions(window, line);
 		else if (ft_isdigit(line[counter]))
 		{
-			count_map(window, line);
+			player_flag += count_map(window, line);
 			window->map->rows++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	safe_map(window, window->map->rows);
+	if (player_flag == 0 || player_flag > 1)
+		ft_end_process("Invalid amount of player\n");
 	return (0);
 }
